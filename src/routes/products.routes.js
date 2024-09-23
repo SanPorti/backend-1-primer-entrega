@@ -9,7 +9,7 @@ const router = Router();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const productsFilePath = path.join(__dirname, "products.json");
+const productsFilePath = path.join(__dirname, "../data/products.json");
 
 //Leer JSON
 const readProductsFile = () => {
@@ -33,9 +33,9 @@ router.get('/', (req, res) => {
 
 //Obtener productos por Id
 router.get('/:pid', (req, res) => {
-    products = readProductsFile();
+    const products = readProductsFile();
     const {pid} = req.params;
-    const product = products.find(product => product.id === Number(pid)); 
+    const product = products.find(product => product.id === pid); 
     if (!product) {
         return res.status(404).send({status:"error", error: "Producto no encontrado."})
     }
@@ -73,8 +73,8 @@ router.put('/:pid', (req, res) => {
     const products = readProductsFile();
     const {pid} = req.params;
     const { title, description, code, price, stock, category } = req.body;
-    const product = products.find(product => product.id === Number(pid))
-    const productIndex = products.findIndex(products => products.id === Number(pid));
+    const product = products.find(product => product.id === pid)
+    const productIndex = products.findIndex(products => products.id === pid);
     if (!product || productIndex === -1) {
         return res.status(404).send({ status: "error", error: "Producto no encontrado."});
     }

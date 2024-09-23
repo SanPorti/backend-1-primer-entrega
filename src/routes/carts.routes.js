@@ -9,7 +9,7 @@ const router = Router();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const carritoFilePath = path.join(__dirname, "carrito.json");
+const carritoFilePath = path.join(__dirname, "../data/carrito.json");
 
 const readCartFile = (filePath) => {
     if (fs.existsSync(filePath)) {
