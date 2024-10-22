@@ -1,0 +1,21 @@
+
+<h1>Tu Carrito</h1>
+<div id="products-container" class="container">
+    {{#each cart}}
+    <div class="card">
+        <p>{{getProp this 'product._id'}}</p>
+        <h2>{{getProp this 'product.title'}}</h2>
+        <p>{{getProp this 'product.description'}}</p>
+        <p><strong>Código:</strong> {{getProp this 'product.code'}}</p>
+        <p><strong>Precio:</strong> {{getProp this 'product.price'}}</p>
+        <p><strong>Stock:</strong> {{getProp this 'product.stock'}}</p>
+        <p><strong>Categoría:</strong> {{getProp this 'product.category'}}</p>
+        <p><strong>Cantidad:</strong> {{getProp this 'quantity'}}</p>
+        <button class="remove-btn" data-id={{getProp this 'product._id'}}>Eliminar del Carrito</button>
+    </div>
+    {{/each}}
+</div>
+
+<script src="/socket.io/socket.io.js"></script> 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/js/cart.js"></script>

@@ -1,9 +1,5 @@
 const socket = io();
 
-socket.on("products", (products) => {
-    console.log(products);
-})
-
 socket.on("products", (data) => {
     const productsContainer = document.getElementById('products-container');
     productsContainer.innerHTML = '';
